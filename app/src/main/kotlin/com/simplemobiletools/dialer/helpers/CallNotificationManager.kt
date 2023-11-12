@@ -17,6 +17,7 @@ import com.simplemobiletools.commons.helpers.isOreoPlus
 import com.simplemobiletools.dialer.R
 import com.simplemobiletools.dialer.activities.CallActivity
 import com.simplemobiletools.dialer.extensions.powerManager
+import com.simplemobiletools.dialer.models.CallContact
 import com.simplemobiletools.dialer.receivers.CallActionReceiver
 
 class CallNotificationManager(private val context: Context) {
@@ -73,6 +74,8 @@ class CallNotificationManager(private val context: Context) {
                 setText(R.id.notification_caller_name, callerName)
                 setText(R.id.notification_call_status, context.getString(contentTextId))
                 setVisibleIf(R.id.notification_accept_call, callState == Call.STATE_RINGING)
+                setText(R.id.notification_caller_company, callContact.company)
+                setVisibleIf(R.id.notification_caller_company, callContact.company.isNotEmpty())
 
                 setOnClickPendingIntent(R.id.notification_decline_call, declinePendingIntent)
                 setOnClickPendingIntent(R.id.notification_accept_call, acceptPendingIntent)

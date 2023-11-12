@@ -25,6 +25,7 @@ import androidx.core.view.children
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.SimpleListItem
+import com.simplemobiletools.commons.models.contacts.Contact
 import com.simplemobiletools.dialer.R
 import com.simplemobiletools.dialer.databinding.ActivityCallBinding
 import com.simplemobiletools.dialer.dialogs.DynamicBottomSheetChooserDialog
@@ -570,6 +571,11 @@ class CallActivity : SimpleActivity() {
             } else {
                 callerAvatar.setImageDrawable(null)
             }
+
+            if (callContact!!.company.isNotEmpty() ) {
+                callerCompany.text = "${callContact!!.company}"
+            }
+
         }
     }
 

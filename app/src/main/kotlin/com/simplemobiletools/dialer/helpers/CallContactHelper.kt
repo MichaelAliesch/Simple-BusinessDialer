@@ -14,13 +14,13 @@ import com.simplemobiletools.dialer.models.CallContact
 
 fun getCallContact(context: Context, call: Call?, callback: (CallContact) -> Unit) {
     if (call.isConference()) {
-        callback(CallContact(context.getString(R.string.conference), "", "", ""))
+        callback(CallContact(context.getString(R.string.conference), "", "", "", ""))
         return
     }
 
     val privateCursor = context.getMyContactsCursor(false, true)
     ensureBackgroundThread {
-        val callContact = CallContact("", "", "", "")
+        val callContact = CallContact("", "", "", "", "")
         val handle = try {
             call?.details?.handle?.toString()
         } catch (e: NullPointerException) {
@@ -54,6 +54,7 @@ fun getCallContact(context: Context, call: Call?, callback: (CallContact) -> Uni
                 val contact = contacts.firstOrNull { it.doesHavePhoneNumber(number) }
                 if (contact != null) {
                     callContact.name = contact.getNameToDisplay()
+                    callContact.company = contact.organization.company.toString()
                     callContact.photoUri = contact.photoUri
 
                     if (contact.phoneNumbers.size > 1) {

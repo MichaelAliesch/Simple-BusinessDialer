@@ -50,6 +50,7 @@ class ConferenceCallsAdapter(
                 getCallContact(itemView.context, call) { callContact ->
                     root.post {
                         itemConferenceCallName.text = callContact.name.ifEmpty { itemView.context.getString(R.string.unknown_caller) }
+                        itemConferenceCallCompany.text = callContact.company
                         SimpleContactsHelper(activity).loadContactImage(
                             callContact.photoUri,
                             itemConferenceCallImage,

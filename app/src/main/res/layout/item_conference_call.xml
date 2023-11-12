@@ -18,20 +18,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.simplemobiletools.commons.views.MyTextView
-        android:id="@+id/item_conference_call_name"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/medium_margin"
-        android:layout_toEndOf="@+id/item_conference_call_image"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textSize="@dimen/bigger_text_size"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/item_conference_call_image"
         app:layout_constraintEnd_toStartOf="@+id/item_conference_call_split"
+        app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintStart_toEndOf="@+id/item_conference_call_image"
         app:layout_constraintTop_toTopOf="@+id/item_conference_call_image"
-        tools:text="John Doe" />
+        app:layout_constraintVertical_bias=".5">
+
+        <com.simplemobiletools.commons.views.MyTextView
+            android:id="@+id/item_conference_call_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="@dimen/bigger_text_size"
+            tools:text="John Doe" />
+
+        <TextView
+            android:id="@+id/item_conference_call_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test Inc."
+            tools:visibility="visible" />
+    </LinearLayout>
 
     <ImageButton
         android:id="@+id/item_conference_call_end"
